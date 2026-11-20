@@ -1,0 +1,11 @@
+[Desktop Entry]
+Type=Application
+Name=0Paint
+GenericName=Raster Image Editor
+Comment=Tiny native Linux raster paint editor
+Exec=0paint %F
+Terminal=false
+Categories=Graphics;2DGraphics;RasterGraphics;
+MimeType=image/bmp;image/png;image/x-portable-pixmap;image/x-tga;
+StartupNotify=true
+Keywords=paint;draw;pixel;image;editor;

@@ -1,0 +1,13 @@
+# .gitignore - build artifacts for 0paint
+
+# === build output ===
+0paint
+src/*.o
+*.tar
+*.tar.gz
+
+# === editor junk ===
+.DS_Store
+*.swp
+*~
+.vscode/
