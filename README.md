@@ -7,7 +7,7 @@ Built to feel immediately familiar if you just want a simple classic paint app f
 ## Why 0Paint
 
 - **0% idle CPU**: runs on a blocking `SDL_WaitEvent()` loop so it actually sleeps until you move the mouse or hit a key.
-- **Runs on almost anything**: compiles with standard `gcc` or `clang` across x86, x86_64, ARMv6/v7, ARM64, RISC-V, and PowerPC. Automatically falls back to `SDL_RENDERER_SOFTWARE` when there is no hardware acceleration.
+- **Runs on almost anything (even potatoest potatoes)**: compiles with standard `gcc` or `clang` across x86, x86_64, ARMv6/v7, ARM64, RISC-V, and PowerPC. Automatically falls back to `SDL_RENDERER_SOFTWARE` when there is no hardware acceleration.
 - **Small memory footprint**: stays under ~10 MB idle, and caps the undo stack by RAM budget (`32 MB` by default, override with `--max-undo-mb=16`) so older low-RAM machines dont start swapping.
 - **Layout-independent hotkeys**: shortcuts read physical scancodes instead of translated characters, so `Ctrl+Z`, `Ctrl+C`, `Ctrl+V`, etc. keep working on Russian and any other non-Latin keyboard layout without switching back to English.
 - **Zero image/font compile dependencies**: includes small built-in C99 encoders/decoders for BMP, PNG, PPM, and TGA plus baked anti-aliased Liberation Sans UI fonts (Latin + Cyrillic) and 4x4 supersampled monochrome toolbar icons. At runtime, the Text tool dynamically loads `libfreetype.so.6` via `dlopen` if present to render any installed system `.ttf`/`.otf` font crisply at arbitrary sizes (falling back to the built-in UTF-8 font automatically). The only compile-time deps are `SDL2`, `libc`, `libm`, and `libdl`.
@@ -73,3 +73,7 @@ All shortcuts work regardless of active keyboard layout:
 ## License
 
 MIT License. See `LICENSE` for details.
+
+
+logo coming soon i swear
+this one was made by js3 with love. keep drawing guyz
