@@ -32,7 +32,7 @@ all: $(TARGET)
 $(TARGET): $(OBJS)
 	$(CC) $(OBJS) -o $(TARGET) $(LDFLAGS)
 
-src/%.o: src/%.c src/zp_types.h src/zp_font.h src/zp_icons.h
+src/%.o: src/%.c src/zp_types.h src/zp_font.h src/zp_icons.h src/zp_logo.h
 	$(CC) $(CFLAGS) -c $< -o $@
 
 strip: $(TARGET)
@@ -41,10 +41,12 @@ strip: $(TARGET)
 install: $(TARGET)
 	install -Dm755 $(TARGET) "$(DESTDIR)$(PREFIX)/bin/$(TARGET)"
 	install -Dm644 0paint.desktop "$(DESTDIR)$(PREFIX)/share/applications/0paint.desktop"
+	install -Dm644 0paint.png "$(DESTDIR)$(PREFIX)/share/icons/hicolor/256x256/apps/0paint.png"
 
 uninstall:
 	rm -f "$(DESTDIR)$(PREFIX)/bin/$(TARGET)"
 	rm -f "$(DESTDIR)$(PREFIX)/share/applications/0paint.desktop"
+	rm -f "$(DESTDIR)$(PREFIX)/share/icons/hicolor/256x256/apps/0paint.png"
 
 clean:
 	rm -f $(OBJS) $(TARGET)
