@@ -4,6 +4,7 @@
 #include "zp_ttf.h"
 #include "zp_font.h"
 #include "zp_icons.h"
+#include "zp_logo.h"
 #include "zp_codec.h"
 #include "zp_platform.h"
 #include <stdio.h>
@@ -458,11 +459,13 @@ static void draw_flat_icon_label(const ZPApp *app, ZPImage *fb, int x, int y, in
 }
 
 static void draw_brand_mark(ZPImage *fb, int x, int y) {
-    fb_rbox(fb, x, y, 16, 16, ZP_COL_ACCENT, ZP_COL_ACCENT);
-    fb_fill(fb, x + 3, y + 3, 4, 4, ZP_COL_WHITE);
-    fb_fill(fb, x + 8, y + 3, 5, 2, ZP_RGB(153, 217, 234));
-    fb_fill(fb, x + 8, y + 6, 5, 2, ZP_RGB(255, 201, 14));
-    fb_fill(fb, x + 3, y + 9, 10, 4, ZP_RGB(237, 28, 36));
+    for (int py = 0; py < ZP_LOGO_MENU_SIZE; ++py) {
+        for (int px = 0; px < ZP_LOGO_MENU_SIZE; ++px) {
+            uint32_t c = ZP_LOGO_20[py * ZP_LOGO_MENU_SIZE + px];
+            uint8_t a = (uint8_t)(c >> 24);
+            if (a) fb_blend(fb, x + px, y + py, c | 0xFF000000u, a);
+        }
+    }
 }
 
 static const char *file_basename(const char *path) {
@@ -704,7 +707,7 @@ void zp_ui_render(ZPApp *app, ZPImage *fb, uint32_t anim_tick) {
     fb_fill(fb, 0, 0, fb->w, ZP_MENUBAR_H, ZP_COL_WHITE);
     fb_fill(fb, 0, ZP_MENUBAR_H - 1, fb->w, 1, ZP_RGB(198, 205, 214));
 
-    draw_brand_mark(fb, 10, 8);
+    draw_brand_mark(fb, 8, 6);
     fb_text_f(fb, 32, 11, "0Paint", ZP_FONT_BOLD, ZP_COL_INK);
     fb_fill(fb, 79, 8, 1, 16, ZP_RGB(213, 219, 227));
 
