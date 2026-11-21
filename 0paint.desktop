@@ -1,6 +1,7 @@
 [Desktop Entry]
 Type=Application
 Name=0Paint
+Icon=0paint
 GenericName=Raster Image Editor
 Comment=Tiny native Linux raster paint editor
 Exec=0paint %F
