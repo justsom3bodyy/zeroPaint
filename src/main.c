@@ -8,6 +8,7 @@
 #include "zp_ttf.h"
 #include "zp_codec.h"
 #include "zp_ui.h"
+#include "zp_logo.h"
 
 /* pop one full utf-8 codepoint from end of string so cyrillic backspace works cleanly */
 static void zp_utf8_pop(char *buf, int *len) {
@@ -89,6 +90,15 @@ int main(int argc, char **argv) {
         fprintf(stderr, "0Paint: SDL_CreateWindow failed: %s\n", SDL_GetError());
         SDL_Quit();
         return 1;
+    }
+
+    SDL_Surface *win_ico = SDL_CreateRGBSurfaceFrom(
+        (void *)ZP_LOGO_32, ZP_LOGO_WIN_SIZE, ZP_LOGO_WIN_SIZE, 32, ZP_LOGO_WIN_SIZE * 4,
+        0x00FF0000u, 0x0000FF00u, 0x000000FFu, 0xFF000000u
+    );
+    if (win_ico) {
+        SDL_SetWindowIcon(win, win_ico);
+        SDL_FreeSurface(win_ico);
     }
 
     /* try hardware first, fall back to software renderer on potato gpus */
